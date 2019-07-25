@@ -1,8 +1,6 @@
 package export
 
-import (
-	"luff/pkg/setting"
-)
+import "luff/pkg/setting"
 
 const EXT = ".xlsx"
 

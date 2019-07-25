@@ -1,11 +1,11 @@
 package app
 
 import (
-	"luff/pkg/e"
-	"net/http"
-
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
+	"net/http"
+
+	"luff/pkg/e"
 )
 
 // BindAndValid binds and validates data
@@ -18,7 +18,7 @@ func BindAndValid(c *gin.Context, form interface{}) (int, int) {
 	valid := validation.Validation{}
 	check, err := valid.Valid(form)
 	if err != nil {
-		return http.StatusInternalServerError, e.INVALID_PARAMS
+		return http.StatusInternalServerError, e.ERROR
 	}
 	if !check {
 		MarkErrors(valid.Errors)

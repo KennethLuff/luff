@@ -3,32 +3,64 @@ package main
 import (
 	"fmt"
 	"log"
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+
 	"luff/models"
+	"luff/pkg/gredis"
 	"luff/pkg/logging"
 	"luff/pkg/setting"
 	"luff/routers"
-	"syscall"
-
-	"github.com/fvbock/endless"
+	"luff/pkg/util"
 )
 
-func main() {
+func init() {
 	setting.Setup()
 	models.Setup()
 	logging.Setup()
+	gredis.Setup()
+	util.Setup()
+}
 
-	endless.DefaultReadTimeOut = setting.ServerSetting.ReadTimeout
-	endless.DefaultWriteTimeOut = setting.ServerSetting.WriteTimeout
-	endless.DefaultMaxHeaderBytes = 1 << 20
+// @title Golang Gin API
+// @version 1.0
+// @description An example of gin
+// @termsOfService https://luff
+// @license.name MIT
+// @license.url https://luff/blob/master/LICENSE
+func main() {
+	gin.SetMode(setting.ServerSetting.RunMode)
+
+	routersInit := routers.InitRouter()
+	readTimeout := setting.ServerSetting.ReadTimeout
+	writeTimeout := setting.ServerSetting.WriteTimeout
 	endPoint := fmt.Sprintf(":%d", setting.ServerSetting.HttpPort)
+	maxHeaderBytes := 1 << 20
 
-	server := endless.NewServer(endPoint, routers.InitRouter())
-	server.BeforeBegin = func(add string) {
-		log.Printf("Actual pid is %d", syscall.Getpid())
+	server := &http.Server{
+		Addr:           endPoint,
+		Handler:        routersInit,
+		ReadTimeout:    readTimeout,
+		WriteTimeout:   writeTimeout,
+		MaxHeaderBytes: maxHeaderBytes,
 	}
 
-	err := server.ListenAndServe()
-	if err != nil {
-		log.Printf("Server err: %v", err)
-	}
+	log.Printf("[info] start http server listening %s", endPoint)
+
+	server.ListenAndServe()
+
+	// If you want Graceful Restart, you need a Unix system and download github.com/fvbock/endless
+	//endless.DefaultReadTimeOut = readTimeout
+	//endless.DefaultWriteTimeOut = writeTimeout
+	//endless.DefaultMaxHeaderBytes = maxHeaderBytes
+	//server := endless.NewServer(endPoint, routersInit)
+	//server.BeforeBegin = func(add string) {
+	//	log.Printf("Actual pid is %d", syscall.Getpid())
+	//}
+	//
+	//err := server.ListenAndServe()
+	//if err != nil {
+	//	log.Printf("Server err: %v", err)
+	//}
 }

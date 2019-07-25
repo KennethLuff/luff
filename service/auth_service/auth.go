@@ -1,8 +1,6 @@
 package auth_service
 
-import (
-	"luff/models"
-)
+import "luff/models"
 
 type Auth struct {
 	Username string

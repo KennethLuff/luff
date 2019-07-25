@@ -5,12 +5,13 @@ import (
 	"image/draw"
 	"image/jpeg"
 	"io/ioutil"
-	"luff/pkg/file"
-	"luff/pkg/qrcode"
-	"luff/pkg/setting"
 	"os"
 
 	"github.com/golang/freetype"
+
+	"luff/pkg/file"
+	"luff/pkg/qrcode"
+	"luff/pkg/setting"
 )
 
 type ArticlePoster struct {
@@ -176,12 +177,12 @@ func (a *ArticlePosterBg) Generate() (string, string, error) {
 			JPG:    jpg,
 			Merged: mergedF,
 
-			Title: "Golang",
+			Title: "Golang Gin 系列文章",
 			X0:    80,
 			Y0:    160,
 			Size0: 42,
 
-			SubTitle: "---Kenneth Luff",
+			SubTitle: "---煎鱼",
 			X1:       320,
 			Y1:       220,
 			Size1:    36,

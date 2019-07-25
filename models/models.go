@@ -3,11 +3,12 @@ package models
 import (
 	"fmt"
 	"log"
-	"luff/pkg/setting"
-	"time"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
+
+	"luff/pkg/setting"
+	"time"
 )
 
 var db *gorm.DB

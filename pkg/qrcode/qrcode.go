@@ -2,12 +2,13 @@ package qrcode
 
 import (
 	"image/jpeg"
-	"luff/pkg/file"
-	"luff/pkg/setting"
-	"luff/pkg/util"
 
 	"github.com/boombuler/barcode"
 	"github.com/boombuler/barcode/qr"
+
+	"luff/pkg/file"
+	"luff/pkg/setting"
+	"luff/pkg/util"
 )
 
 type QrCode struct {

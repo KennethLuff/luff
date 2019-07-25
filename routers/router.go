@@ -1,19 +1,20 @@
 package routers
 
 import (
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+
+	_ "luff/docs"
+	"github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
+
 	"luff/middleware/jwt"
 	"luff/pkg/export"
 	"luff/pkg/qrcode"
 	"luff/pkg/upload"
 	"luff/routers/api"
-	v1 "luff/routers/api/v1"
-	"net/http"
-
-	_ "luff/docs"
-
-	"github.com/gin-gonic/gin"
-	ginSwagger "github.com/swaggo/gin-swagger"
-	"github.com/swaggo/gin-swagger/swaggerFiles"
+	"luff/routers/api/v1"
 )
 
 // InitRouter initialize routing information

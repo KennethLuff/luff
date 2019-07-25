@@ -3,17 +3,18 @@ package tag_service
 import (
 	"encoding/json"
 	"io"
+	"strconv"
+	"time"
+
+	"github.com/360EntSecGroup-Skylar/excelize"
+	"github.com/tealeg/xlsx"
+
 	"luff/models"
 	"luff/pkg/export"
 	"luff/pkg/file"
 	"luff/pkg/gredis"
 	"luff/pkg/logging"
 	"luff/service/cache_service"
-	"strconv"
-	"time"
-
-	"github.com/360EntSecGroup-Skylar/excelize"
-	"github.com/tealeg/xlsx"
 )
 
 type Tag struct {
@@ -150,7 +151,7 @@ func (t *Tag) Import(r io.Reader) error {
 		return err
 	}
 
-	rows, _ := xlsx.GetRows("标签信息")
+	rows := xlsx.GetRows("标签信息")
 	for irow, row := range rows {
 		if irow > 0 {
 			var data []string

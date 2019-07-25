@@ -1,14 +1,15 @@
 package api
 
 import (
-	"luff/pkg/app"
-	"luff/pkg/e"
-	"luff/pkg/util"
-	"luff/service/auth_service"
 	"net/http"
 
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
+
+	"luff/pkg/app"
+	"luff/pkg/e"
+	"luff/pkg/util"
+	"luff/service/auth_service"
 )
 
 type auth struct {

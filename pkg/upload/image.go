@@ -3,14 +3,15 @@ package upload
 import (
 	"fmt"
 	"log"
-	"luff/pkg/file"
-	"luff/pkg/logging"
-	"luff/pkg/setting"
-	"luff/pkg/util"
 	"mime/multipart"
 	"os"
 	"path"
 	"strings"
+
+	"luff/pkg/file"
+	"luff/pkg/logging"
+	"luff/pkg/setting"
+	"luff/pkg/util"
 )
 
 // GetImageFullUrl get the full access path
