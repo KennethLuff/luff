@@ -1,12 +1,10 @@
-# Go Gin Example [![rcard](https://goreportcard.com/badge/luff)](https://goreportcard.com/report/luff) [![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://godoc.org/luff) [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/EDDYCJY/go-gin-example/master/LICENSE)
+# Luff
 
 An example of gin contains many useful features
 
-[简体中文](https://luff/blob/master/README_ZH.md)
-
 ## Installation
 ```
-$ go get luff
+$ go get github.com/KennethLuff/luff
 ```
 
 ## How to run
@@ -16,10 +14,6 @@ $ go get luff
 - Mysql
 - Redis
 
-### Ready
-
-Create a **blog database** and import [SQL](https://luff/blob/master/docs/sql/blog.sql)
-
 ### Conf
 
 You should modify `conf/app.ini`
@@ -27,8 +21,8 @@ You should modify `conf/app.ini`
 ```
 [database]
 Type = mysql
-User = root
-Password =
+User = kenneth
+Password = 654321
 Host = 127.0.0.1:3306
 Name = blog
 TablePrefix = blog_
@@ -44,7 +38,7 @@ IdleTimeout = 200
 
 ### Run
 ```
-$ cd $GOPATH/src/go-gin-example
+$ cd $GOPATH/src/luff
 
 $ go run main.go 
 ```
